@@ -1,48 +1,43 @@
-
 # README.md
 
-## Installation
+## codedavinci002.py
 
-To install the required packages, run:
+A Python script that generates code using OpenAI's Code Davinci 002 engine. It supports various programming languages, including Python, JavaScript, and C#. The generated code is then beautified using appropriate formatters before being saved to a file.
 
-```bash
-pip install openai autopep8 jsbeautifier Microsoft.CodeAnalysis.CSharp
-```
-
-## Usage
-
-### CLI Arguments
-
-You can use the script with CLI arguments by passing the required parameters as follows:
+### Installation
 
 ```bash
-python script.py --context "public class Point2D {...}" --instructions "Add a method to the Point2D class that calculates the distance between two points." --language "C#" --platform ".NET" --project_details "A simple 2D point library for .NET applications." --output_folder "output_folder" --output_filename "generated_code.cs"
+pip install openai autopep8 jsbeautifier aiohttp
 ```
 
-Replace the values of `--context`, `--instructions`, `--language`, `--platform`, `--project_details`, `--output_folder`, and `--output_filename` with your desired values.
+### How to use
 
-### Within Script
+#### As CLI arguments
 
-You can also use the script by editing the parameters in the `if __name__ == "__main__"` block. Modify the values of `args` dictionary accordingly:
+```bash
+python codedavinci002.py --context "public class Point2D {...}" --instructions "Add a method to the Point2D class that calculates the distance between." --language "C#" --platform ".NET" --project_details "A simple 2D point library for .NET applications." --output_folder "output_folder" --output_filename "generated_code.cs"
+```
+
+#### Within the script
+
+Modify the `args` dictionary in the `main()` function:
 
 ```python
-if __name__ == "__main__":
-    args = {
-        "context": "public class Point2D {...}",
-        "instructions": "Add a method to the Point2D class that calculates the distance between two points.",
-        "language": "C#",
-        "platform": ".NET",
-        "project_details": "A simple 2D point library for .NET applications.",
-        "output_folder": "output_folder",
-        "output_filename": "generated_code.cs",
-    }
-    # ...
+args = {
+    "context": "public class Point2D {...}",
+    "instructions": "Add a method to the Point2D class that calculates the distance between.",
+    "language": "C#",
+    "platform": ".NET",
+    "project_details": "A simple 2D point library for .NET applications.",
+    "output_folder": "output_folder",
+    "output_filename": "generated_code.cs",
+}
 ```
 
-After modifying the values, run the script:
+Then run the script:
 
 ```bash
-python script.py
+python codedavinci002.py
 ```
 
-The generated code will be saved in the specified output folder and filename.
+The generated code will be saved in the specified output folder and file.
